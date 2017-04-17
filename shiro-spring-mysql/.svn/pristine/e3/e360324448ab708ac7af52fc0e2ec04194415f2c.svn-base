@@ -1,0 +1,37 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+	<%@ include file="/WEB-INF/pages/include/topInc.jsp" %>
+  <%@ include file="/WEB-INF/pages/include/topHead.jsp" %>
+</head>
+<body>
+<h3>Permission Details</h3>
+<table>
+<thead>
+<tr>ID</tr>
+<tr>Permission Name</tr>
+
+</thead>
+<tbody>
+
+
+<c:forEach items="${roles}" var="module">
+<tr>
+<td> ${module.id} </td>
+<td> ${module.peName}</td>
+
+<td><a href="${contextPath}/permission/delete/${module.id}"> <input type="button" value="Delete" /></a></td>
+<td><a href="${contextPath}/permission/update/${module.id}"> <input type="button" value="Update" /></a></td>
+<td><a href="${contextPath}/permission/view/${module.id}"> <input type="button" value="View" /></a></td>
+</tr>
+</c:forEach>
+
+</tbody>
+</table>
+</body>
+</html>

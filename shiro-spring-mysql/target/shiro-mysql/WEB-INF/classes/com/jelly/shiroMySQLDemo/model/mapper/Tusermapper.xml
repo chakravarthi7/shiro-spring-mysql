@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- author:Collonn, Email:collonn@126.com, QQ:195358385 -->
+
+
+
+<mapper namespace="com.jelly.shiroMySQLDemo.model.mapper.Tusermapper">
+
+
+	
+	<select id="getall" parameterType="string" resultType="TUser">
+		select * from T_USER
+					
+	</select>
+	
+	<insert id="save" parameterType="tuser">
+		insert into T_USER(username,password,salt) values(#{username},#{password},#{salt})
+	</insert>
+	
+	<update id="update" parameterType="tuser">
+		update T_USER set username=#{username},password=#{password},salt=#{salt} where id=#{id}
+	</update>
+	
+
+	<select id="find" parameterType="tuser" resultType="tuser">
+		select * from T_USER where id=#{id}
+	</select>
+	
+	
+	<delete id="delete" parameterType="tuser">
+		delete from T_USER where id=#{id}
+	</delete>
+</mapper>

@@ -1,0 +1,17 @@
+package com.jelly.shiroMySQLDemo.model.mapper;
+
+import java.util.List;
+
+import com.jelly.shiroMySQLDemo.model.TRolePermission;
+
+public interface Trolpermapper {
+	
+	public void save(TRolePermission trolepermission);
+	
+	public List<TRolePermission> selectperid(int roleId);
+	
+	public void deletebyroleid(int roleId);
+	
+	public List<TRolePermission> getall();
+
+}

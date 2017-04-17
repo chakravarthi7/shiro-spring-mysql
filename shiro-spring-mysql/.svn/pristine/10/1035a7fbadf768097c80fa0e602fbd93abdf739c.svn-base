@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Insert title here</title>
+	<%@ include file="/WEB-INF/pages/include/topInc.jsp" %>
+  <%@ include file="/WEB-INF/pages/include/topHead.jsp" %>
+</head>
+<title>Insert title here</title>
+</head>
+<body>
+${Msg}
+<form action="${contextPath}/application/add" method="post" >
+
+
+Application Name: 
+<input type="text" name="appname"> <br>
+
+Application URL:
+<Input type="url" name="appurl"><br>
+
+
+<br><br><div id="here">
+<c:forEach items="${rolevalue}" var="valu">
+  <input type="checkbox" id="roleId${valu.id}" name=roleId value="${valu.id}">${valu.roName}<br>
+
+</c:forEach><br><br></div>
+
+
+
+<button type="submit" >Add Application</button>
+
+</form>
+
+</body>
+</html>

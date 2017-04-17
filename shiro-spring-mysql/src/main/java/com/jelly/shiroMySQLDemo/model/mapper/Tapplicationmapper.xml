@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jelly.shiroMySQLDemo.model.mapper.Tapplicationmapper">
+
+	<insert id="save" parameterType="tapplication" useGeneratedKeys="true" keyProperty="id" keyColumn="id" >
+		insert into T_APPLICATION(appname,appurl) values(#{appname},#{appurl})
+	 <selectKey keyProperty="id" resultType="int" order="AFTER">
+        SELECT LAST_INSERT_ID() as  id;
+       </selectKey> 
+	</insert>
+	
+
+	
+
+	<select id="getall" parameterType="tapplication" resultType="TApplication">
+		select * from T_APPLICATION
+</select>
+	
+	
+	<update id="update" parameterType="tapplication">
+		update T_APPLICATION set appname=#{appname},appurl=#{appurl} where id=#{id}
+	</update>
+	
+
+	<select id="find" parameterType="tapplication" resultType="tapplication">
+		select * from T_APPLICATION where id=#{id}
+	</select>
+	
+	
+	<delete id="delete" parameterType="tapplication">
+		delete from T_APPLICATION where id=#{id}
+	</delete>
+	
+	<select id="getappname" parameterType="tapplication" resultType="TApplication">
+		select id,appname from T_APPLICATION
+</select>
+</mapper>

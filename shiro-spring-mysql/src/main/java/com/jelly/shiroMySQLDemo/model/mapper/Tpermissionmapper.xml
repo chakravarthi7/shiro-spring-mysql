@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- author:Collonn, Email:collonn@126.com, QQ:195358385 -->
+
+
+
+<mapper   namespace="com.jelly.shiroMySQLDemo.model.mapper.Tpermissionmapper">
+
+<resultMap id="TPermissionMap"  type="TPermission" >
+        <id property="id" column="id" />
+        <result property="peName" column="pe_name" />
+</resultMap>
+
+
+	
+	<select id="getall"  parameterType="list" resultMap="TPermissionMap">
+		select * from T_PERMISSION
+					
+	</select>
+	
+	<insert id="save" parameterType="tpermission">
+		insert into T_PERMISSION(PE_NAME) values(#{peName})
+	</insert>
+	
+	<update id="update" parameterType="tpermission">
+		update T_PERMISSION set PE_NAME = #{peName} where id=#{id}
+	</update>
+	
+
+	<select id="find" parameterType="list" resultMap="TPermissionMap">
+		select * from T_PERMISSION where id=#{id}
+	</select>
+	
+	
+	<delete id="delete" parameterType="tpermission">
+		delete from T_PERMISSION where id=#{id}
+	</delete>
+</mapper>

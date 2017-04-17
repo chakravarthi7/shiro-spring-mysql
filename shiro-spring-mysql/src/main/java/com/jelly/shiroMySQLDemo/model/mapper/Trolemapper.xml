@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jelly.shiroMySQLDemo.model.mapper.Trolemapper">
+
+<resultMap id="TRoleMap"  type="TRole" >
+        <id property="id" column="id" />
+        <result property="roName" column="ro_name" />
+</resultMap>
+	
+	<select id="getall" parameterType="list" resultMap="TRoleMap">
+		select * from T_ROLE
+					
+	</select>
+	
+	<insert id="save" parameterType="trole">
+		insert into T_ROLE(RO_NAME) values(#{roName})
+	</insert>
+	
+	<update id="update" parameterType="trole">
+		update T_ROLE set RO_NAME = #{roName} where id=#{id}
+	</update>
+	
+
+	<select id="find" parameterType="list" resultMap="TRoleMap">
+		select * from T_ROLE where id=#{id}
+	</select>
+	
+	
+	<delete id="delete" parameterType="trole">
+		delete from T_ROLE where id=#{id}
+	</delete>
+	</mapper>

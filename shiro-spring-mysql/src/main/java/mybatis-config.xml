@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+	        <setting name="lazyLoadingEnabled" value="true"/>
+     </settings>
+
+	<typeAliases>
+	
+		<typeAlias type="com.jelly.shiroMySQLDemo.model.TUser" alias="TUser"/>
+	
+		<typeAlias type="com.jelly.shiroMySQLDemo.model.TRole" alias="TRole"/>
+		<typeAlias type="com.jelly.shiroMySQLDemo.model.TPermission" alias="TPermission"/>
+		<typeAlias type="com.jelly.shiroMySQLDemo.model.TRolePermission" alias="TRolePermission"/>
+			<typeAlias type="com.jelly.shiroMySQLDemo.model.TApplication" alias="TApplication"/>
+			<typeAlias type="com.jelly.shiroMySQLDemo.model.TApplicationRole" alias="TApplicationRole"/>
+	</typeAliases> 
+	
+</configuration>

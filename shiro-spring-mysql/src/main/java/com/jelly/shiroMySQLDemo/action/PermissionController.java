@@ -1,0 +1,81 @@
+package com.jelly.shiroMySQLDemo.action;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.jelly.shiroMySQLDemo.model.TPermission;
+import com.jelly.shiroMySQLDemo.service.Tpermissionservice;
+import com.jelly.shiroMySQLDemo.service.serviceImpl.Trolperservice;
+
+@Controller
+@RequestMapping("/permission")
+public class PermissionController {
+	
+	@Autowired
+	Tpermissionservice tpermissionservice;
+	
+	@Autowired
+	Trolperservice trolperservice;
+	
+		@RequestMapping("/add")
+	  public String peradd(@ModelAttribute(value="tpermission") TPermission tpermission, ModelMap model){
+
+		tpermissionservice.save(tpermission);
+	
+		return "redirect:/permission/details";
+		
+	}
+	
+	@RequestMapping("/details")
+	  public String roledetails(ModelMap model){
+
+		
+		List<TPermission> permdetails = tpermissionservice.getall();
+		
+		model.addAttribute("roles", permdetails);
+		
+		return "perdetails";
+		
+	}
+	
+	 @RequestMapping(value="/view/{id}")
+		public String view(@PathVariable int id,ModelMap model){
+		
+	
+	        model.addAttribute("viewobject", tpermissionservice.find(id));
+			  return "perview";
+			}
+
+	 
+	 @RequestMapping(value="/delete/{id}")
+		public String delete(@PathVariable int id,ModelMap model){
+			 	System.out.println("In delete T user");
+	        	tpermissionservice.delete(id);
+	        	trolperservice.deletebyperid(id);
+			  return "redirect:/permission/details";
+			}
+	 @RequestMapping(value="/update/{id}")
+		public String update(@PathVariable int id,ModelMap model){
+
+	   	   model.addAttribute("objectvalues",tpermissionservice.find(id));
+	    	
+			  return "perupdate";
+			}
+	 
+	 @RequestMapping(value="/edit")
+		public String edit(@ModelAttribute(value="tpermission") TPermission tpermission,ModelMap model){
+	   System.out.println("Helloasd as d ");
+	   System.out.println(tpermission.getId());
+	   System.out.println(tpermission.getPeName());
+	   tpermissionservice.update(tpermission);
+			return "redirect:/permission/details";
+	   
+
+}
+}

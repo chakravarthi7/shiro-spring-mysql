@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jelly.shiroMySQLDemo.model.mapper.Tapplicationrolemapper" >
+
+<insert id="save" parameterType="tapplicationrole" >
+		insert into T_APP_ROLE(appid,roleid) values(#{appid},#{roleid})
+		
+	</insert>
+
+<delete id="delete" parameterType="tapplicationrole">
+		delete from T_APP_ROLE where appid=#{appid}
+	</delete>
+
+<select id="getrolbyappid" parameterType="list" resultType="TApplicationRole">
+	select ROLEID from T_APP_ROLE where appid=#{appid}
+</select>
+</mapper>

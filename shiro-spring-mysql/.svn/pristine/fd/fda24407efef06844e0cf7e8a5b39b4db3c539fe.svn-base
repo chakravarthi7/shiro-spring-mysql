@@ -1,0 +1,25 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ include file="/WEB-INF/pages/include/topInc.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+
+  <%@ include file="/WEB-INF/pages/include/topHead.jsp" %>
+</head>
+<body>
+<form action="${contextPath}/role/edit" method="post"  >
+ <input type="hidden" name="id" value="${objectvalues.id}">
+  Role name:
+  <input type="text" name="RoName" value="${objectvalues.roName}"><br/>
+
+  <input type="submit" Value="Update Role">
+
+</form>
+
+
+</body>
+</html>
+
